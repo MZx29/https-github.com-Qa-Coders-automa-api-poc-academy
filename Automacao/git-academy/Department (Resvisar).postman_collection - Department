@@ -1,0 +1,301 @@
+{
+	"info": {
+		"_postman_id": "1f4cc0d4-c83a-4e9c-b077-b88448dbc279",
+		"name": "Department (Resvisar)",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30808449"
+	},
+	"item": [
+		{
+			"name": "Department",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"Departamento\", JSON.parse(responseBody).newDepartment._id);\r",
+							"\r",
+							"let jsonData = JSON.parse(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentName\": \"Controladoria\",\r\n  \"costCenterId\": \"{{IDCostCenter}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department Duplicidade",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"Departamento\", JSON.parse(responseBody).newDepartment._id);\r",
+							"\r",
+							"let jsonData = JSON.parse(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentName\": \"Controle de Vendas\",\r\n  \"costCenterId\": \"{{IDCostCenter}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department Mandatory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"Departamento\", JSON.parse(responseBody).newDepartment._id);\r",
+							"\r",
+							"let jsonData = JSON.parse(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentName\": \"Controle de Vendas\",\r\n  \"costCenterId\": \"{{IDCostCenter}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department Only secret letters, lowercase letters and the special character &",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentName\": \"Controle0 de V00end@s\",\r\n  \"costCenterId\": \"{{IDCostCenter}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department max 50 characters",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentName\": \"Controle de Vendas Controle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de VendasControle de Vendas\",\r\n  \"costCenterId\": \"{{IDCostCenter}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/658d94010f617abe798fd87b",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						"658d94010f617abe798fd87b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/status/{{Departamento}}",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						"status",
+						"{{Departamento}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Department Edit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"departmentName\": \"Vendas\",\r\n  \"costCenterId\": \"{{IDCostCenter}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}department/{{Departamento}}",
+					"host": [
+						"{{URL}}department"
+					],
+					"path": [
+						"{{Departamento}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{Token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

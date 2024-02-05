@@ -1,0 +1,392 @@
+{
+	"info": {
+		"_postman_id": "718614c0-7b3c-4f58-8a57-48908eae2b38",
+		"name": "CostCenter",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30808449"
+	},
+	"item": [
+		{
+			"name": "CostCenter",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"IDCostCenter\", JSON.parse(responseBody).newCostCenter._id);\r",
+							"\r",
+							"let jsonData = JSON.parse(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"Finanças\",\r\n  \"boardId\": \"{{IdDiretory}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostCenter Mandatory",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"\",\r\n  \"boardId\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostCenter Max 50 characters",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças Finanças \",\r\n  \"boardId\": \"{{IdDiretory}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostCenter Only secret letters, lowercase letters and the special character &",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"T1 t3cn0l0g1\",\r\n  \"boardId\": \"{{IdDiretory}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostCenter List",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostCenter Count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/count",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						"count"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "CostCenter Only",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/658ae1b70f617abe798fd66b",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						"658ae1b70f617abe798fd66b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit CostCenter",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"Departamento de TI\",\r\n  \"boardId\": \"{{IdDiretory}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/658ae1b70f617abe798fd66b",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						"658ae1b70f617abe798fd66b"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit CostCenter Mandatory",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"\",\r\n  \"boardId\": \"\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/{{IDCompany}}",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						"{{IDCompany}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit CostCenter Only Description and Characteres",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"costCenterName\": \"M@rket1ng de T1\",\r\n  \"boardId\": \"64e51573d94be9062773f6da\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/{{IDCompany}}",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						"{{IDCompany}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit CostCenter Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}costCenter/status/658c34380f617abe798fd78f",
+					"host": [
+						"{{URL}}costCenter"
+					],
+					"path": [
+						"status",
+						"658c34380f617abe798fd78f"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{Token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

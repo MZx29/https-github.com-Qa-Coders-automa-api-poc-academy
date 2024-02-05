@@ -1,0 +1,1271 @@
+{
+	"info": {
+		"_postman_id": "72d9f9b2-bf75-4e5b-976c-9ff9783b0504",
+		"name": "User",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30808449"
+	},
+	"item": [
+		{
+			"name": "Register",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"pm.environment.set(\"FullName\", pm.variables.replaceIn('{{$randomFullName}}'))\r",
+							"pm.environment.set(\"Email\", pm.variables.replaceIn('{{$randomEmail}}'))\r",
+							"\r",
+							"\r",
+							"function firstName(){\r",
+							"\t\r",
+							"\tvar firstName = [ \"Maria\",\"João\",\"Ana\",\"Pedro\",\"Carla\",\"Lucas\",\"Mariana\",\"Paulo\",\"Camila\",\"Rafael\",\"Juliana\",\"Gustavo\",\"Larissa\",\"Fernando\",\"Amanda\",\"Diego\",\"Isabela\",\"Ricardo\",\"Natália\",\"Henrique\",\"Lívia\",\"Roberto\",\"Sofia\",\"Eduardo\",\"Vitória\",\"Fábio\",\"Mariana\",\"André\",\"Letícia\",\"Rodrigo\",\"Lara\",\"Guilherme\",\"Bianca\",\"Miguel\",\"Alice\",\"Leonardo\",\"Laura\",\"Daniel\",\"Beatriz\",\"Felipe\",\"Luiza\",\"Arthur\",\"Helena\",\"Gabriel\",\"Valentina\",\"Bernardo\",\"Sophia\",\"Vitor\",\"Clara\",\"Francisco\",\"Yasmin\",\"Enzo\",\"Isabel\",\"Isabella\",\"Lorenzo\",\"Joana\",\"Samuel\",\"Melissa\",\"Otávio\",\"Ana\",\"Breno\",\"Cecília\",\"Benjamin\",\"Luana\",\"Mariane\",\"Davi\",\"Nathália\",\"Raul\",\"Isadora\",\"Marcelo\",\"Luna\",\"Nicolas\",\"Laís\",\"Augusto\",\"Stella\",\"Ruan\",\"Gabriela\",\"Luciano\",\"Evelyn\",\"Thiago\",\"Lorena\",\"Vinícius\",\"Catarina\",\"Murilo\",\"Pietra\",\"Tomás\",\"Carolina\",\"Caio\",\"Manuela\",\"Emanuelly\",\"Lavinia\",\"Lucca\",\"Mirella\",\"Kevin\",\"Rebeca\",\"Anthony\",\"Júlia\"];\r",
+							"\r",
+							"\tvar randomItem = firstName[Math.floor(Math.random() * firstName.length)];\r",
+							"\r",
+							"\treturn randomItem;\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"FirstName\", firstName());\r",
+							"\r",
+							"function lastName(){\r",
+							"\t\r",
+							"\tvar lastName = [\"Silva\",\"Santos\",\"Oliveira\",\"Souza\",\"Rodrigues\",\"Almeida\",\"Costa\",\"Pereira\",\"Carvalho\",\"Ferreira\",\"Gomes\",\"Martins\",\"Rocha\",\"Ribeiro\",\"Alves\",\"Lima\",\"Sousa\",\"Fernandes\",\"Pinto\",\"Cunha\",\"Mendes\",\"Barbosa\",\"Saraiva\",\"Machado\",\"Cardoso\",\"Nogueira\",\"Ramos\",\"Coelho\",\"Araújo\",\"Castro\",\"Fonseca\",\"Rocha\",\"Moreira\",\"Figueiredo\",\"Gonçalves\",\"Monteiro\",\"Marques\",\"Peixoto\",\"Morais\",\"Lopes\",\"Vieira\",\"Tavares\",\"Correia\",\"Neves\",\"Nunes\",\"Cavalcanti\",\"Andrade\",\"Freitas\",\"Coutinho\",\"Rezende\",\"Macedo\",\"Borges\",\"Barros\",\"Melo\",\"Barbosa\",\"Campos\",\"Lemos\",\"Braga\",\"Teixeira\",\"Dias\",\"Albuquerque\",\"Sampaio\",\"Moura\",\"Rocha\",\"Silveira\",\"Aguiar\",\"Abreu\",\"Lima\",\"Pacheco\",\"Vargas\",\"Farias\",\"Moraes\",\"Ferreira\",\"Gusmão\",\"Sousa\",\"Azevedo\",\"Dantas\",\"Cavalcante\",\"Batista\",\"Peixoto\",\"Pires\",\"Leite\",\"Ramos\",\"Macedo\",\"Sales\",\"Carneiro\",\"Monteiro\",\"Goulart\",\"Cruz\",\"Fialho\",\"Xavier\",\"Prado\",\"Valente\",\"Furtado\",\"Vieira\"];\r",
+							"\r",
+							"\tvar randomItem = lastName[Math.floor(Math.random() * lastName.length)];\r",
+							"\r",
+							"\treturn randomItem;\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"LastName\", lastName());\r",
+							"\r",
+							"\r",
+							"\r",
+							"pm.environment.set(\"FullName\", pm.variables.get(\"FirstName\")+ \" \" +pm.variables.get(\"LastName\"));\r",
+							"\r",
+							"function domain(){\r",
+							"    var domain = [\"@gmail.com\",\"@hotmail.com\",\"@yahoo.com\",\"@outlook.com\",\"@aol.com\",\"@icloud.com\",\"@protonmail.com\",\"@gmx.com\",\"@mail.com\",\"@zoho.com\",\"@yandex.com\",\"@live.com\",\"@rocketmail.com\",\"@fastmail.com\",\"@tutanota.com\",\"@inbox.com\",\"@me.com\",\"@rediffmail.com\",\"@sbcglobal.net\",\"@cox.net\",\"@yahoo.co.uk\",\"@att.net\",\"@mail.ru\",\"@optonline.net\",\"@ymail.com\",\"@outlook.com.br\",\"@live.com.mx\",\"@gmx.de\",\"@web.de\",\"@yahoo.com.br\",\"@yandex.ru\",\"@hotmail.fr\",\"@hotmail.co.uk\",\"@yahoo.fr\",\"@outlook.es\",\"@mail.ru\",\"@orange.fr\",\"@libero.it\",\"@hotmail.it\",\"@yahoo.it\",\"@o2.pl\",\"@wp.pl\",\"@interia.pl\",\"@onet.pl\",\"@seznam.cz\",\"@abv.bg\",\"@gmx.at\",\"@gmx.ch\",\"@bluewin.ch\",\"@inbox.lv\",\"@rambler.ru\",\"@mail.bg\",\"@yahoo.ca\",\"@hotmail.ca\",\"@bell.net\",\"@hotmail.com.au\",\"@yahoo.com.au\",\"@t-online.de\",\"@arcor.de\",\"@cox.net\",\"@verizon.net\",\"@yahoo.de\",\"@hotmail.de\",\"@wanadoo.fr\",\"@live.fr\",\"@gmx.fr\",\"@mail.be\",\"@telenet.be\",\"@hotmail.be\",\"@yahoo.co.in\",\"@live.in\",\"@rediffmail.com\",\"@hotmail.in\",\"@indiatimes.com\",\"@yahoo.co.id\",\"@hotmail.co.id\",\"@yahoo.com.sg\",\"@outlook.sg\",\"@hotmail.com.sg\",\"@yahoo.com.ph\",\"@yahoo.com.vn\",\"@yahoo.com.ar\",\"@yahoo.com.mx\",\"@yahoo.com.co\",\"@yahoo.com.pe\",\"@yahoo.com.ve\",\"@yahoo.com.ec\",\"@yahoo.com.bo\",\"@yahoo.com.gt\",\"@yahoo.com.do\",\"@yahoo.com.pa\",\"@yahoo.com.hk\",\"@yahoo.com.tw\",\"@yahoo.com.cn\",\"@yahoo.co.jp\",\"@yahoo.co.kr\",\"@yahoo.co.th\",\"@yahoo.com.my\",\"@yahoo.com.sa\",\"@yahoo.ae\",\"@yahoo.co.il\",\"@yahoo.com.tr\",\"@yahoo.com.eg\",\"@yahoo.com.ng\",\"@yahoo.co.za\",\"@yahoo.com.au\",\"@yahoo.com.nz\",\"@yahoo.com.ph\",\"@yahoo.com.vn\"];\r",
+							"    var radomItem = domain[Math.floor(Math.random() * domain.length)]\r",
+							"    return radomItem;\r",
+							"}\r",
+							"console.log(domain())\r",
+							"pm.environment.set(\"Domain\", domain());\r",
+							"\r",
+							"function mail(){\r",
+							"    var mail = pm.variables.get(\"FirstName\").toLowerCase()+pm.variables.get(\"LastName\").toLowerCase()+pm.variables.get(\"Domain\");\r",
+							"    return mail;\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"Email\", mail());\r",
+							"\r",
+							"\r",
+							"//Função para gerar senha///x~x~x~x~x~x~x~x~x~x~x~x~x~x\r",
+							"\r",
+							"function gerarSenha() {\r",
+							"const caracteres = \"ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789@#$%\";\r",
+							"const comprimentoMinimo = 8;\r",
+							"const comprimentoMaximo = 12;\r",
+							"let senhaArray = [];\r",
+							"\r",
+							"// Garante pelo menos un caractere maiúsculo, winúsculo, número e especial \r",
+							"senhaArray.push(caracteres[Math.floor(Math.random() * 26)]); // Caractere maiúsculo \r",
+							"senhaArray.push(caracteres[26 + Math.floor(Math.random() * 26)]); // Caractere minúsculo \r",
+							"senhaArray.push(caracteres[52 + Math.floor(Math.random() * 10)]); // Número \r",
+							"senhaArray.push(caracteres[62 + Math.floor(Math.random() * 4)]); // Caractere especial\r",
+							"\r",
+							"const comprimentoRestante = Math.max(comprimentoMinimo - senhaArray.length, comprimentoMaximo - senhaArray.length);\r",
+							"\r",
+							"for (let i = 0; i < comprimentoRestante; i++) {\r",
+							"    senhaArray.push(caracteres [Math.floor(Math.random() * caracteres.length)]);\r",
+							"}\r",
+							"\r",
+							"return shuffleString(senhaArray.join(\"\"));\r",
+							"}\r",
+							"\r",
+							"function shuffleString(string) {\r",
+							"  return string.split(\"\").sort(() => Math.random() - 0.5).join(\"\");\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"Password\", gerarSenha());\r",
+							"\r",
+							"///////////Função para gerar CPF///x~x~x~x~x~x~x~x~x~x~x~x~x~x\r",
+							"\r",
+							"function generateCPF() {\r",
+							"const randomDigit = () => Math.floor(Math.random() * 10);\r",
+							"\r",
+							"// Gere os 9 primeiros digitos do CPF\r",
+							"const cpfDigits = Array.from({ length: 9 }, randomDigit);\r",
+							"\r",
+							"// Calcule o primeiro digito verificador\r",
+							"let sum = 0;\r",
+							"for (let i = 10; i > 1; i--) {\r",
+							"  sum += cpfDigits[10 - i] * i;\r",
+							"}\r",
+							"const firstVerifierDigit = (sum * 10) % 11;\r",
+							"cpfDigits.push(firstVerifierDigit === 10 ? 0 : firstVerifierDigit);\r",
+							"\r",
+							"// Calcule o segundo digito verificador sum = 0;\r",
+							"sum = 0;\r",
+							"for (let i = 11; i > 1; i--){\r",
+							"    sum += cpfDigits[11 - i] * i;\r",
+							"}\r",
+							"\r",
+							"const secondVerifierDigit = (sum * 10) % 11;\r",
+							"cpfDigits.push(secondVerifierDigit === 10 ? 10 : secondVerifierDigit);\r",
+							"\r",
+							"return cpfDigits.join('');\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"CPFUser\", generateCPF());\r",
+							"console.log(generateCPF())\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 201', function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validando o FullName\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).user.fullName).to.eql(pm.environment.get(\"FullName\"));\r",
+							"});\r",
+							"\r",
+							"pm.test (\"ID exist\", function () {\r",
+							"   pm.expect(JSON.parse(responseBody).user._id).is.exist\r",
+							"});\r",
+							"\r",
+							"pm.test (\"Validating the Email\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).user.mail).to.eql(pm.environment.get(\"Email\"));\r",
+							"});\r",
+							"\r",
+							"pm.test (\"Validating the CPF\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).user.cpf).to.eql(pm.environment.get(\"CPFUser\"));\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"IDUser\", JSON.parse(responseBody).user._id);\r",
+							"\r",
+							"let jsonData = JSON.parse(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"{{FullName}}\",\r\n  \"mail\": \"{{Email}}\",\r\n  \"password\": \"{{Password}}\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": {{CPFUser}},\r\n  \"confirmPassword\": \"{{Password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Name mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Name max 100 characters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke Aloysius Benjy Cobweb Dartagnan Egbert Felix Gaspar Humbert Ignatius Jayden Kasper Leroy Maximilian Neddy Obiajulu Pepin Quilliam Rosencrantz Sexton Teddy Upwood Vivatma Wayland Xylon Yardley Zachary Usansky\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Name only letters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"joao lu@z\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Name completed",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"barnaby mandrak\",\r\n  \"mail\": \"test@uol.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register mail",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register mail Completed",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"teste@gol\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register mail without space",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"teste t@ gol.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234@Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Password mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/register",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Password Min",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Password Max",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234estadjckre@jljkJ\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234estadjckre@jljkJ\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Password rules",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234lest\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234lest\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Password confirmation",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"1234Test\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Password confirmation mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Barnaby Marmaduke\",\r\n  \"mail\": \"test@test.com.br\",\r\n  \"password\": \"1234@Test\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user",
+					"host": [
+						"{{URL}}user"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register falta de info",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test('Status code is 400', function () {\r",
+							"    pm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validating the msg error\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).error).is.exist\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"\",\r\n  \"mail\": \"\",\r\n  \"password\": \"\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"cpf\": 11122233344,\r\n  \"confirmPassword\": \"\",\r\n  \"audit\": [\r\n    {\r\n      \"idCompany\": \"Qa-Coders\",\r\n      \"loginUser\": \"Test-0000\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/register",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registre - Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"TokenUser\", JSON.parse(responseBody).token);\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"mail\": \"{{Email}}\",\r\n  \"password\": \"{{Password}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}login/",
+					"host": [
+						"{{URL}}login"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration list",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{Token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Registration Count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/count/",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"count",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Register Edit",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Jorge Santos\",\r\n  \"mail\": \"jorginhosantos@hotmail.com\",\r\n  \"password\": \"novo@Test45\",\r\n  \"accessProfile\": \"ADMIN\",\r\n  \"confirmPassword\": \"novo@Test45\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/{{IDUser}}",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"{{IDUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Name",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"fullName\": \"Goku Son\",\r\n  \"mail\": \"gokussj@uol.com.hk\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/{{IDUser}}",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"{{IDUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Password",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Verify the message\", function () {\r",
+							"    pm.expect(pm.environment.get(\"MsChangedPassord\")).to.eql(JSON.parse(responseBody).msg)\r",
+							"});\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"password\": \"1234@Test\",\r\n  \"confirmPassword\": \"1234@Test\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/password/{{IDUser}}",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"password",
+						"{{IDUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/status/{{IDUser}}",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"status",
+						"{{IDUser}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Delete",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2NTMzMDk0NWZiMWY2YzUyZjFjY2RlMzAiLCJmdWxsTmFtZSI6IlFhLUNvZGVycy1TWVNBRE1JTiIsIm1haWwiOiJzeXNhZG1pbkBxYWNvZGVycy5jb20iLCJwYXNzd29yZCI6IiQyYiQxMCQ2a3ZCejBBcjhIeE03TWxteUZjWEVPN3kvdzRrMlpIRFhsVS84TUdmNy9rcEY1UW9VMWVxRyIsImFjY2Vzc1Byb2ZpbGUiOiJTWVNBRE1JTiIsImNwZiI6IjExMTExMTExMTExIiwic3RhdHVzIjp0cnVlLCJhdWRpdCI6W3sicmVnaXN0ZXJlZEJ5Ijp7InVzZXJJZCI6IjExMTExMTExMTExMTExMTExMSIsInVzZXJMb2dpbiI6InN5c2FkbWluQHFhY29kZXJzLmNvbSJ9LCJyZWdpc3RyYXRpb25EYXRlIjoic2V4dGEtZmVpcmEsIDIwLzEwLzIwMjMsIDIwOjEyOjA1IEJSVCIsInJlZ2lzdHJhdGlvbk51bWJlciI6IjAxIiwiY29tcGFueUlkIjoiUWEuQ29kZXJzIiwiX2lkIjoiNjUzMzA5NDVmYjFmNmM1MmYxY2NkZTMxIn1dLCJfX3YiOjAsImlhdCI6MTcwMDIyODQwNiwiZXhwIjoxNzAwMzE0ODA2fQ.KqXz1U8V7W08KGdrauTv2PzO5PPPjNiFychIlaYp99M\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/admin/65577252fc5456c7a86acaba",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"admin",
+						"65577252fc5456c7a86acaba"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "User Student",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"token\": \"{{Token}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}user/student/{{IDUser}}",
+					"host": [
+						"{{URL}}user"
+					],
+					"path": [
+						"student",
+						"{{IDUser}}"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "value",
+				"value": "{{Token}}",
+				"type": "string"
+			},
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}

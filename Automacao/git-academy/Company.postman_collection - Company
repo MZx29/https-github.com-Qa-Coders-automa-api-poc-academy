@@ -1,0 +1,1674 @@
+{
+	"info": {
+		"_postman_id": "7a24f6cb-797f-49c4-b919-f4544966bb72",
+		"name": "Company",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30808449"
+	},
+	"item": [
+		{
+			"name": "Company",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const nomes = [\"Empresa\", \"Clube\", \"Industria\", \"Comercio\", \"Instituto\", \"Companhia\", \"Prime\", \"Nexus\", \"Elite\", \"Paragon\", \"Pinnacle\", \"Apex\", \"Assembleia\", \"Sociedade\", \"Entidade\"];\r",
+							"const adjetivos = [\"Global\", \"Nacional\", \"Internacional\", \"Inovadora\", \"Moderna\", \"Tradicional\", \"Edificio\", \"Tecnologias\", \"Predial\", \"Logistica\", \"Estadual\", \"Municipal\", \"\"];\r",
+							"const sufixos = [\"Ltda\", \"S.A.\", \"EIRELI\", \"MEI\", \"ME\"];\r",
+							" \r",
+							"const nomeRandom = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"const adjetivoRandom = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"const sufixoRandom = sufixos[Math.floor(Math.random() * sufixos.length)];\r",
+							" \r",
+							"pm.environment.set(\"CorporateName\", nomeRandom + \" \" + adjetivoRandom);\r",
+							" \r",
+							"pm.environment.set(\"RazaoSocial\", nomeRandom + \" \" + adjetivoRandom + \" \" + sufixoRandom);\r",
+							" \r",
+							"pm.environment.set(\"EmailCompany\",  \r",
+							"    pm.variables.replaceIn(nomeRandom.toLowerCase() + adjetivoRandom.toLowerCase() + '@eagles.com'))\r",
+							" \r",
+							" \r",
+							"function gerarCNPJ() {\r",
+							"    var n = [];\r",
+							"    for (var i = 0; i < 8; i++) {\r",
+							"        n[i] = Math.floor(Math.random() * 10);\r",
+							"    }\r",
+							"    n[8] = 0;\r",
+							"    n[9] = 0;\r",
+							"    n[10] = 0;\r",
+							"    n[11] = 1;\r",
+							"    var d1 = n[0] * 5 + n[1] * 4 + n[2] * 3 + n[3] * 2 + n[4] * 9 + n[5] * 8 + n[6] * 7 + n[7] * 6;\r",
+							"    d1 = 11 - (d1 % 11);\r",
+							"    if (d1 >= 10) {\r",
+							"        d1 = 0;\r",
+							"    }\r",
+							"    var d2 = d1 * 2 + n[0] * 6 + n[1] * 5 + n[2] * 4 + n[3] * 3 + n[4] * 2 + n[5] * 9 + n[6] * 8 + n[7] * 7 + n[8] * 6 + n[9] * 5 + n[10] * 4 + n[11] * 3;\r",
+							"    d2 = 11 - (d2 % 11);\r",
+							"    if (d2 >= 10) {\r",
+							"        d2 = 0;\r",
+							"    }\r",
+							"    return '' + n[0] + n[1] + n[2] + n[3] + n[4] + n[5] + n[6] + n[7] + n[8] + n[9] + n[10] + n[11] + d1 + d2;\r",
+							"}\r",
+							"pm.environment.set(\"CNPJ\", gerarCNPJ());\r",
+							" \r",
+							" \r",
+							"function gerarTelefone() {\r",
+							"    var ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;\r",
+							"    var n1 = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;\r",
+							"    var n2 = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;\r",
+							"    return '+55'  + ddd  +  n1  + n2;\r",
+							"}\r",
+							"pm.environment.set(\"Telefone\", gerarTelefone());\r",
+							" \r",
+							" \r",
+							"function gerarCEP() {\r",
+							"    var n = Math.floor(Math.random() * 90000000) + 10000000;\r",
+							"    return String(n).slice(0, 5)  + String(n).slice(5);\r",
+							"}\r",
+							"pm.environment.set(\"CEP\", gerarCEP());\r",
+							" \r",
+							" \r",
+							"function gerarRua() {\r",
+							"    var nomes = [\"Avenida\", \"Rua\", \"Travessa\", \"Alameda\", \"Praça\"];\r",
+							"    var adjetivos = [\"Principal\", \"Central\", \"Nova\", \"Velha\", \"Grande\"];\r",
+							"    var nome = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"    var adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"    return nome + \" \" + adjetivo;\r",
+							"}\r",
+							"pm.environment.set(\"Rua\", gerarRua());\r",
+							" \r",
+							" \r",
+							"function gerarBairro() {\r",
+							"    var nomes = [\"Jardim\", \"Vila\", \"Parque\", \"Residencial\", \"Conjunto\"];\r",
+							"    var adjetivos = [\"Bela Vista\", \"Floresta\", \"Centro\", \"Nova\", \"Velha\"];\r",
+							"    var nome = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"    var adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"    return nome + \" \" + adjetivo;\r",
+							"}\r",
+							"pm.environment.set(\"Bairro\", gerarBairro());\r",
+							" \r",
+							" \r",
+							"function gerarNumeroCasa() {\r",
+							"    return Math.floor(Math.random() * (9999 - 1 + 1)) + 1;\r",
+							"}\r",
+							"pm.environment.set(\"NumeroCasa\", gerarNumeroCasa());\r",
+							" \r",
+							" \r",
+							"function gerarComplementoEndereco() {\r",
+							"    var complementos = [\"Apto\", \"Casa\", \"Bloco\", \"Lote\", \"Sala\"];\r",
+							"    var numero = Math.floor(Math.random() * (999 - 1 + 1)) + 1;\r",
+							"    var complemento = complementos[Math.floor(Math.random() * complementos.length)];\r",
+							"    return complemento + \" \" + numero;\r",
+							"}\r",
+							"pm.environment.set(\"ComplementoEndereco\", gerarComplementoEndereco());\r",
+							"\r",
+							"pm.environment.set(\"Service\", pm.variables.replaceIn('{{$randomJobType}}'))"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Validating the CNPJ\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).newCompany.registerCompany).to.eql(pm.environment.get(\"CNPJ\"));\r",
+							"});\r",
+							"pm.test(\"Status code is 201\", function () {\r",
+							"    pm.response.to.have.status(201);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Validando o CorporateName\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).newCompany.fullName).to.eql(pm.environment.get(\"CorporateName\"));\r",
+							"});\r",
+							"\r",
+							"pm.test (\"Validating the Email\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).newCompany.mail).to.eql(pm.environment.get(\"EmailCompany\"));\r",
+							"});\r",
+							"\r",
+							"pm.environment.set(\"IDCompany\", JSON.parse(responseBody).newCompany._id);\r",
+							"\r",
+							"let jsonData = JSON.parse(responseBody);"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"{{CorporateName}}\",\r\n  \"registerCompany\": \"{{CNPJ}}\",\r\n  \"mail\": \"{{EmailCompany}}\",\r\n  \"matriz\": \"{{RazaoSocial}}\",\r\n  \"responsibleContact\": \"{{FullName}}\",\r\n  \"telephone\": \"{{Telefone}}\",\r\n  \"serviceDescription\": \"{{Service}}\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"{{CEP}}\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"{{Bairro}}\",\r\n      \"street\": \"{{Rua}}\",\r\n      \"number\": \"{{NumeroCasa}}\",\r\n      \"complement\": \"{{ComplementoEndereco}}\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company",
+					"host": [
+						"{{URL}}company"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Duplicity",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - RegisterCompany",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test (\"Validating the CNPJ\", function () {\r",
+							"    pm.expect(JSON.parse(responseBody).newCompany.registerCompany).to.eql(pm.environment.get(\"CNPJ\"));\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"121264560001580\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Matriz max. 100 characters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000150\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA Gogoos LTDA\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Matriz  alphanumeric",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000150\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Gog00s L1DA\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Matriz  mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000150\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Matriz",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"121264560001580\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - ResponsibleContact only letters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marc10\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - ResponsibleContact max. 100 characters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio Marcio\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - ResponsibleContact Only letters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marci0\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Telephone",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marci0\",\r\n  \"telephone\": \"99999999999999\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Telephone max. 15 characters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marci0\",\r\n  \"telephone\": \"9999999999999090909009\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Telephone only number",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"999999999999fg\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Email Mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"55685122450314\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Email domain valid",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"novo@novo\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"55685122450314\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Email",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"novo@novo.com.br\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"55685122450314\",\r\n  \"serviceDescription\": \"Testes\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - ServiceDescription Mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"12126456000158\",\r\n  \"serviceDescription\": \"\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - ServiceDescription Alphanumeric",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"12126456000158\",\r\n  \"serviceDescription\": \"Service Desk N1\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Adsress mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"12126456000158\",\r\n  \"serviceDescription\": \"Service Desk N1\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"\",\r\n      \"city\": \"\",\r\n      \"state\": \"\",\r\n      \"district\": \"\",\r\n      \"street\": \"\",\r\n      \"number\": \"\",\r\n      \"complement\": \"\",\r\n      \"country\": \"\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Adsress max Characteres",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"12126456000158\",\r\n  \"serviceDescription\": \"Service Desk N1\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo São Paulo \",\r\n      \"state\": \"SPs\",\r\n      \"district\": \"Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores \",\r\n      \"street\": \"Avenida Interlagos Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores Rua das Flores \",\r\n      \"number\": \"50000000000000\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar de 4503 ao fim - lado ímpar \",\r\n      \"country\": \"Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil Brasil \"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Adsress only letters",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"12126456000158\",\r\n  \"serviceDescription\": \"Service Desk N1\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"Sã0 Paul0\",\r\n      \"state\": \"S0\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"3ras1l\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company - Adsress only number",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000158\",\r\n  \"mail\": \"Novo@test.com\",\r\n  \"matriz\": \"Teste\",\r\n  \"responsibleContact\": \"Marcio\",\r\n  \"telephone\": \"12126456000158\",\r\n  \"serviceDescription\": \"Service Desk N1\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"0477700l\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"50f\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"3ras1l\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company mandatory",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const nomes = [\"Empresa\", \"Clube\", \"Industria\", \"Comercio\", \"Instituto\", \"Companhia\", \"Prime\", \"Nexus\", \"Elite\", \"Paragon\", \"Pinnacle\", \"Apex\", \"Assembleia\", \"Sociedade\", \"Entidade\"];\r",
+							"const adjetivos = [\"Global\", \"Nacional\", \"Internacional\", \"Inovadora\", \"Moderna\", \"Tradicional\", \"Edificio\", \"Tecnologias\", \"Predial\", \"Logistica\", \"Estadual\", \"Municipal\", \"\"];\r",
+							"const sufixos = [\"Ltda\", \"S.A.\", \"EIRELI\", \"MEI\", \"ME\"];\r",
+							" \r",
+							"const nomeRandom = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"const adjetivoRandom = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"const sufixoRandom = sufixos[Math.floor(Math.random() * sufixos.length)];\r",
+							" \r",
+							"pm.environment.set(\"CorporateName\", nomeRandom + \" \" + adjetivoRandom);\r",
+							" \r",
+							"pm.environment.set(\"RazaoSocial\", nomeRandom + \" \" + adjetivoRandom + \" \" + sufixoRandom);\r",
+							" \r",
+							"pm.environment.set(\"Email\",  \r",
+							"    pm.variables.replaceIn(nomeRandom.toLowerCase() + adjetivoRandom.toLowerCase() + '@eagles.com'))\r",
+							" \r",
+							" \r",
+							"function gerarCNPJ() {\r",
+							"    var n = [];\r",
+							"    for (var i = 0; i < 8; i++) {\r",
+							"        n[i] = Math.floor(Math.random() * 10);\r",
+							"    }\r",
+							"    n[8] = 0;\r",
+							"    n[9] = 0;\r",
+							"    n[10] = 0;\r",
+							"    n[11] = 1;\r",
+							"    var d1 = n[0] * 5 + n[1] * 4 + n[2] * 3 + n[3] * 2 + n[4] * 9 + n[5] * 8 + n[6] * 7 + n[7] * 6;\r",
+							"    d1 = 11 - (d1 % 11);\r",
+							"    if (d1 >= 10) {\r",
+							"        d1 = 0;\r",
+							"    }\r",
+							"    var d2 = d1 * 2 + n[0] * 6 + n[1] * 5 + n[2] * 4 + n[3] * 3 + n[4] * 2 + n[5] * 9 + n[6] * 8 + n[7] * 7 + n[8] * 6 + n[9] * 5 + n[10] * 4 + n[11] * 3;\r",
+							"    d2 = 11 - (d2 % 11);\r",
+							"    if (d2 >= 10) {\r",
+							"        d2 = 0;\r",
+							"    }\r",
+							"    return '' + n[0] + n[1] + n[2] + n[3] + n[4] + n[5] + n[6] + n[7] + n[8] + n[9] + n[10] + n[11] + d1 + d2;\r",
+							"}\r",
+							"pm.environment.set(\"CNPJ\", gerarCNPJ());\r",
+							" \r",
+							" \r",
+							"function gerarTelefone() {\r",
+							"    var ddd = Math.floor(Math.random() * (99 - 11 + 1)) + 11;\r",
+							"    var n1 = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;\r",
+							"    var n2 = Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000;\r",
+							"    return '+55'  + ddd  +  n1  + n2;\r",
+							"}\r",
+							"pm.environment.set(\"Telefone\", gerarTelefone());\r",
+							" \r",
+							" \r",
+							"function gerarCEP() {\r",
+							"    var n = Math.floor(Math.random() * 90000000) + 10000000;\r",
+							"    return String(n).slice(0, 5)  + String(n).slice(5);\r",
+							"}\r",
+							"pm.environment.set(\"CEP\", gerarCEP());\r",
+							" \r",
+							" \r",
+							"function gerarRua() {\r",
+							"    var nomes = [\"Avenida\", \"Rua\", \"Travessa\", \"Alameda\", \"Praça\"];\r",
+							"    var adjetivos = [\"Principal\", \"Central\", \"Nova\", \"Velha\", \"Grande\"];\r",
+							"    var nome = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"    var adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"    return nome + \" \" + adjetivo;\r",
+							"}\r",
+							"pm.environment.set(\"Rua\", gerarRua());\r",
+							" \r",
+							" \r",
+							"function gerarBairro() {\r",
+							"    var nomes = [\"Jardim\", \"Vila\", \"Parque\", \"Residencial\", \"Conjunto\"];\r",
+							"    var adjetivos = [\"Bela Vista\", \"Floresta\", \"Centro\", \"Nova\", \"Velha\"];\r",
+							"    var nome = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"    var adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"    return nome + \" \" + adjetivo;\r",
+							"}\r",
+							"pm.environment.set(\"Bairro\", gerarBairro());\r",
+							" \r",
+							" \r",
+							"function gerarNumeroCasa() {\r",
+							"    return Math.floor(Math.random() * (9999 - 1 + 1)) + 1;\r",
+							"}\r",
+							"pm.environment.set(\"NumeroCasa\", gerarNumeroCasa());\r",
+							" \r",
+							" \r",
+							"function gerarComplementoEndereco() {\r",
+							"    var complementos = [\"Apto\", \"Casa\", \"Bloco\", \"Lote\", \"Sala\"];\r",
+							"    var numero = Math.floor(Math.random() * (999 - 1 + 1)) + 1;\r",
+							"    var complemento = complementos[Math.floor(Math.random() * complementos.length)];\r",
+							"    return complemento + \" \" + numero;\r",
+							"}\r",
+							"pm.environment.set(\"ComplementoEndereco\", gerarComplementoEndereco());\r",
+							"\r",
+							"pm.environment.set(\"Service\", pm.variables.replaceIn('{{$randomJobType}}'))"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"\",\r\n  \"registerCompany\": \"\",\r\n  \"mail\": \"\",\r\n  \"matriz\": \"\",\r\n  \"responsibleContact\": \"\",\r\n  \"telephone\": \"\",\r\n  \"serviceDescription\": \"\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"\",\r\n      \"city\": \"\",\r\n      \"state\": \"\",\r\n      \"district\": \"\",\r\n      \"street\": \"\",\r\n      \"number\": \"\",\r\n      \"complement\": \"\",\r\n      \"country\": \"\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "TesteZ",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"const nomes = [\"Empresa\", \"Clube\", \"Industria\", \"Comercio\", \"Instituto\", \"Companhia\", \"Prime\", \"Nexus\", \"Elite\", \"Paragon\", \"Pinnacle\", \"Apex\", \"Assembleia\", \"Sociedade\", \"Entidade\"];\r",
+							"const adjetivos = [\"Global\", \"Nacional\", \"Internacional\", \"Inovadora\", \"Moderna\", \"Tradicional\", \"Edificio\", \"Tecnologias\", \"Predial\", \"Logistica\", \"Estadual\", \"Municipal\", \"\"];\r",
+							"const sufixos = [\"Ltda\", \"S.A.\", \"EIRELI\", \"MEI\", \"ME\"];\r",
+							"\r",
+							"const nomeRandom = nomes [Math.floor(Math.random() * nomes.length)];\r",
+							"const adjetivoRandom = adjetivos [Math.floor(Math.random() * adjetivos.length)];\r",
+							"const sufixoRandom = sufixos [Math.floor(Math.random() * sufixos.length)];\r",
+							"\r",
+							"pm.environment.set(\"CorporateName\", nomeRandom + \" \" + adjetivoRandom);\r",
+							"\r",
+							"pm.environment.set(\"RazaoSocial\", nomeRandom + \" \" + adjetivoRandom + \" \" + sufixoRandom);\r",
+							"\r",
+							"pm.environment.set(\"Email\", \r",
+							"    pm.variables.replaceIn(nomeRandom.toLowerCase() + adjetivoRandom.toLowerCase() + '@eagles.com'))\r",
+							"\r",
+							"function gerarCNPJ() {\r",
+							"    var n = [];\r",
+							"    for (var i = 0; i < 8; i++) {\r",
+							"        n[i] =  Math.floor(Math.random() * 10);\r",
+							"    }\r",
+							"    n[8] = 0;\r",
+							"    n[9] = 0;\r",
+							"    n[10] = 0;\r",
+							"    n[11] = 1;\r",
+							"    var d1 = n[0] * 5 + n[1] * 4 + n[2] * 3 + n[3]* 2 + n[4] * 9 + n[5] * 8 + n[6] * 7 + n[7] * 6;\r",
+							"    d1 = 11 - (d1 % 11);\r",
+							"    if (d1 >= 10) {\r",
+							"        d1 = 0;\r",
+							"    }\r",
+							"    var d2 = d1 * 2 + n[0] * 6 + n[1] * 5 + n[2] * 4 + n[3]* 3 +n[4] * 2 + n[5] * 9 + n[6] * 8 + n[7] * 7 + n[8] * 6 + n[9] * 5 + n[10] * 4 + n[11] * 3;\r",
+							"    d2 = 11 - (d2 % 11);\r",
+							"    if (d2 >= 10) {\r",
+							"        d2 = 0;\r",
+							"    }\r",
+							"    return '' + n[8] + [1] + [2] + [3] + [4] + [5] + [6] + [7] + [8] + [9] + [10] + [11] + d1 + d2;\r",
+							"}\r",
+							"pm.environment.set(\"CNPJ\", gerazCNPJ());\r",
+							"\r",
+							"\r",
+							"\r",
+							"function gerarTelefone() {\r",
+							"    var ddd = Math.floor(Math.random() * (99 -11 + 1)) + 11;\r",
+							"    var n1 = Math.floor(Math.random() (9999 - 1000 +1)) + 1000;\r",
+							"    var n2= Math.floor(Math.random() (9999 - 1000 + 1)) + 1000;\r",
+							"    return '+55' + ddd + n1 + n2;\r",
+							"}\r",
+							"pm.environment.set(\"Telefone\", gerarTelefone());\r",
+							"\r",
+							"\r",
+							"function gerarCEP() {\r",
+							"    var n = Math.floor(Math.random() * 90000000) + 10000000;\r",
+							"    return String(n).slice(8, 5) + String(n).slice(5);\r",
+							"}  \r",
+							"pm.environment.set(\"CEP\", gerarCEP());\r",
+							"\r",
+							"function gerarRua() {\r",
+							"    var nomes = [\"Avenida\", \"Rua\", \"Travessa\", \"Alameda\", \"Praça\"];\r",
+							"    var adjetivos = [\"Principal\", \"Central\", \"Nova\", \"Velha\", \"Grande\"];\r",
+							"    var nome = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"    var adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"    return nome + \" \" + adjetivo;\r",
+							"}\r",
+							"pm.environment.set(\"Rua\", gerarRua());\r",
+							"\r",
+							"function gerarBairro() {\r",
+							"    var nomes = [\"Jardim\", \"Vila\", \"Parque\", \"Residencial\", \"Conjunto\"];\r",
+							"    var adjetivos = [\"Bela Vista\", \"Floresta\", \"Centro\", \"Nova\", \"Velha\"];\r",
+							"    var nome = nomes[Math.floor(Math.random() * nomes.length)];\r",
+							"    var adjetivo = adjetivos[Math.floor(Math.random() * adjetivos.length)];\r",
+							"    return nome + \" \" + adjetivo;\r",
+							"}\r",
+							"pm.environment.set(\"Bairro\", gerarBairro());\r",
+							"\r",
+							"\r",
+							"function gerarNumeroCasa() {\r",
+							"    return Math.floor(Math.random() * (9999 - 1 + 1)) + 1;\r",
+							"}\r",
+							"pm.environment.set(\"NumeroCasa\", gerarNumeroCasa());\r",
+							"\r",
+							"\r",
+							"function gerarComplementoEndereco() {\r",
+							"    var complementos = [\"Apto\", \"Casa\", \"Bloco\", \"Lote\", \"Sala\"];\r",
+							"    var numero = Math.floor(Math.random() * (999 - 1 + 1)) + 1;\r",
+							"    var complemento = complementos[Math.floor(Math.random() * complementos.length)];\r",
+							"    return complemento + \" \" + numero;\r",
+							"}\r",
+							"\r",
+							"pm.environment.set(\"ComplementoEndereco\", gerarComplementoEndereco());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "apikey",
+					"apikey": [
+						{
+							"key": "value",
+							"value": "{{Token}}",
+							"type": "string"
+						},
+						{
+							"key": "key",
+							"value": "token",
+							"type": "string"
+						},
+						{
+							"key": "in",
+							"value": "query",
+							"type": "string"
+						}
+					]
+				},
+				"method": "OPTIONS",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"{{Namecompany}}\",\r\n  \"registerCompany\": \"1234567891234\",\r\n  \"mail\": \"{{EmailCompany}}\",\r\n  \"matriz\": \"{{Matriz}}\",\r\n  \"responsibleContact\": \"{{FullName}}\",\r\n  \"telephone\": \"{{Phone}}\",\r\n  \"serviceDescription\": \"{{Service}}\",\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"04777001\",\r\n      \"city\": \"São Paulo\",\r\n      \"state\": \"SP\",\r\n      \"district\": \"Rua das Flores\",\r\n      \"street\": \"Avenida Interlagos\",\r\n      \"number\": \"{{Number}}\",\r\n      \"complement\": \"de 4503 ao fim - lado ímpar\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Delete Company",
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/657c92980f617abe798fcfee",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						"657c92980f617abe798fcfee"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company count",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/count/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						"count",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company Status",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"status\": false\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/status/659c0bbb0f617abe798fd984",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						"status",
+						"659c0bbb0f617abe798fd984"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Company List",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"var template = `\r",
+							"<style type=\"text/css\">\r",
+							"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+							"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+							"    .tftable tr {background-color:#ffffff;}\r",
+							"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+							"    .tftable tr:hover {background-color:#e0ffff;}\r",
+							"</style>\r",
+							"\r",
+							"<table class=\"tftable\" border=\"1\">\r",
+							"    <tr>\r",
+							"        <th>ID</th>\r",
+							"        <th>Corporate Name</th>\r",
+							"        <th>Status</th>\r",
+							"    </tr>\r",
+							"    \r",
+							"    {{#each response}}\r",
+							"        <tr>\r",
+							"            <td>{{_id}}</td>\r",
+							"            <td>{{corporateName}}</td>\r",
+							"            <td>{{status}}</td>\r",
+							"        </tr>\r",
+							"    {{/each}}\r",
+							"</table>\r",
+							"`;\r",
+							"\r",
+							"function constructVisualizerPayload() {\r",
+							"    return {response: pm.response.json()}\r",
+							"}\r",
+							"\r",
+							"pm.visualizer.set(template, constructVisualizerPayload());"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Show Company",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/{{IDCompany}}",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						"{{IDCompany}}"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Company",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"corporateName\": \"Geloucos Loucos\",\r\n  \"registerCompany\": \"12126456000155\",\r\n  \"mail\": \"geloucos@test.com\",\r\n  \"matriz\": \"Gogoos LTDA\",\r\n  \"responsibleContact\": \"Marcos\",\r\n  \"telephone\": \"98987654245\",\r\n  \"serviceDescription\": \"RH\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/656e1d31a8369eef402f4754",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						"656e1d31a8369eef402f4754"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Edit Address Company",
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"address\": [\r\n    {\r\n      \"zipCode\": \"05297001\",\r\n      \"city\": \"Rio de janeiro\",\r\n      \"state\": \"RJ\",\r\n      \"district\": \"Rua das Botas\",\r\n      \"street\": \"Avenida Passos\",\r\n      \"number\": \"20\",\r\n      \"complement\": \"Uruguaiana\",\r\n      \"country\": \"Brasil\"\r\n    }\r\n  ]\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{URL}}company/address/656e1d31a8369eef402f4754",
+					"host": [
+						"{{URL}}company"
+					],
+					"path": [
+						"address",
+						"656e1d31a8369eef402f4754"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"auth": {
+		"type": "apikey",
+		"apikey": [
+			{
+				"key": "in",
+				"value": "query",
+				"type": "string"
+			},
+			{
+				"key": "value",
+				"value": "{{Token}}",
+				"type": "string"
+			},
+			{
+				"key": "key",
+				"value": "token",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	]
+}
